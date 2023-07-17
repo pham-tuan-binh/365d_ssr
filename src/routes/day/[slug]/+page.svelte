@@ -5,13 +5,6 @@
   let randomQuote = quoteInfo.quotes[Number(data.slug) - 1];
   let randomQuoteLoading = false;
 
-  async function fetchQuote() {
-    randomQuoteLoading = true;
-    const res = await fetch(`/quote?day=${data.slug}`);
-    randomQuote = await res.json();
-    randomQuoteLoading = false;
-  }
-
   function calculateDateFrom(startingDate, numberOfDays) {
     let startDateParts = startingDate.split("/"); // Split the starting date string
     let day = parseInt(startDateParts[0], 10); // Extract the day
@@ -69,6 +62,18 @@
   function reDirect() {
     window.location.replace("/");
   }
+
+  function leftClickHandle() {
+    if (Number(data.slug) > 1 && Number(data.slug) < 366) {
+      window.location.replace("/day/" + (Number(data.slug) - 1));
+    }
+  }
+
+  function rightClickHandle() {
+    if (Number(data.slug) > 0 && Number(data.slug) < 365) {
+      window.location.replace("/day/" + (Number(data.slug) + 1));
+    }
+  }
 </script>
 
 <svelte:head>
@@ -94,10 +99,18 @@
   class="w-screen h-screen flex flex-col justify-center items-center z-0 overflow-hidden"
 >
   <div
+    class="absolute w-1/2 h-full left-0 top-0 z-10"
+    on:click={leftClickHandle}
+  />
+  <div
+    class="absolute w-1/2 h-full right-0 top-0 z-10"
+    on:click={rightClickHandle}
+  />
+  <div
     class="w-full h-full max-w-xl flex flex-col justify-start items-center absolute"
     transition:fade
   >
-    <div class="w-3/4 flex flex-col space-y-1 my-10" on:click={reDirect}>
+    <div class="w-3/4 flex flex-col space-y-1 my-10 z-20" on:click={reDirect}>
       <span class="mt-5 text-center text-2xl">"365 days" Album</span>
       <span class="mt-5 text-center text-xs"
         >"365 days" Album is a photography project by Binh Pham. You are viewing
