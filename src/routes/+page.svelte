@@ -42,6 +42,10 @@
     copyToClipboard(link);
   }
 
+  function reDirect() {
+    window.location.href = "https://www.instagram.com/365d_album/";
+  }
+
   function typewriter(node, { speed = 1 }) {
     const valid =
       node.childNodes.length === 1 &&
@@ -232,7 +236,9 @@
               )}
             </p>
           </div>
-          <div class="mt-5 flex flex-row justify-center items-center">
+          <div
+            class="mt-5 flex flex-row justify-center items-center cursor-pointer"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -251,11 +257,32 @@
         </div>
 
         {#if !randomQuoteLoading}
-          <p class="mt-4 text-xs ml-1" transition:fade>
+          <p class="mt-4 text-xs ml-1 mb-8" transition:fade>
             "{randomQuote.quote}" -
             <span class="font-bold">{randomQuote.author}</span>
           </p>
         {/if}
+
+        <div
+          class="w-48 p-2 outline-1 outline rounded-full ml-1 flex flex-row items-center justify-center cursor-pointer z-20"
+          on:click={reDirect}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.25"
+            stroke="currentColor"
+            class="w-6 h-6 mr-3"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+            />
+          </svg>
+          <span class="mt-1">View full album</span>
+        </div>
       </div>
     </div>
   {/if}
