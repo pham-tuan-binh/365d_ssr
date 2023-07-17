@@ -1,9 +1,9 @@
 <script>
-  import { onMount } from "svelte";
+  import quoteInfo from "../../quotes.json";
   export let data;
 
-  let randomQuote = 0;
-  let randomQuoteLoading = true;
+  let randomQuote = quoteInfo.quotes[Number(data.slug) - 1];
+  let randomQuoteLoading = false;
 
   async function fetchQuote() {
     randomQuoteLoading = true;
@@ -69,22 +69,25 @@
   function reDirect() {
     window.location.replace("/");
   }
-
-  onMount(() => {
-    fetchQuote();
-  });
 </script>
 
 <svelte:head>
-  <meta name="description" content="Art Project by Binh Pham" />
+  <meta
+    name="description"
+    content={`"${randomQuote.quote}" - ${randomQuote.author}`}
+  />
   <title>Day {data.slug} in "365 days" Album</title>
   <meta property="og:title" content={`Day ${data.slug} in "365 days" Album`} />
+  <meta
+    name="og:description"
+    content={`"${randomQuote.quote}" - ${randomQuote.author}`}
+  />
   <meta property="og:type" content="website" />
   <meta
     property="og:url"
     content={"https://365days.binhph.am/day/" + data.slug}
   />
-  <meta property="og:image" content="open-graph-banner.png" />
+  <meta property="og:image" content={"/images/" + data.slug + ".jpg"} />
 </svelte:head>
 
 <div

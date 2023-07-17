@@ -1,5 +1,6 @@
 <script>
   import { fade, fly } from "svelte/transition";
+  import quoteInfo from "./quotes.json";
   let currentState = 0;
   let randomPicture = getRandomNumber(1, 365);
   let randomQuote = { content: "Loading..." };
@@ -90,13 +91,6 @@
     return calculatedDate;
   }
 
-  async function fetchRandomQuotes() {
-    randomQuoteLoading = true;
-    const res = await fetch(`/quote?day=${randomPicture}`);
-    randomQuote = await res.json();
-    randomQuoteLoading = false;
-  }
-
   async function leftClickHandle() {
     if (currentState === 0) {
       alert("Tap on the right to continue.");
@@ -110,7 +104,7 @@
       currentState = 0;
     } else if (currentState == 2) {
       randomPicture = getRandomNumber(1, 365);
-      await fetchRandomQuotes();
+      randomQuote = quoteInfo.quotes[randomPicture - 1];
       currentState++;
     } else {
       currentState++;
@@ -124,7 +118,7 @@
   <meta property="og:title" content={`"365 days" Photo Album`} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={"https://365days.binhph.am"} />
-  <meta property="og:image" content="open-graph-banner.png" />
+  <meta property="og:image" content="/open-graph-banner.png" />
 </svelte:head>
 
 <div
