@@ -110,12 +110,64 @@
     class="w-full h-full max-w-xl flex flex-col justify-start items-center absolute"
     transition:fade
   >
-    <div class="w-3/4 flex flex-col space-y-1 my-10 z-20" on:click={reDirect}>
-      <span class="mt-5 text-center text-2xl">"365 days" Album</span>
-      <span class="mt-5 text-center text-xs"
-        >"365 days" Album is a photography project by Binh Pham. You are viewing
-        one of his many works in this album. Click the title above to view more.
-      </span>
+    <div class="w-3/4 flex flex-col space-y-1 my-10">
+      <div
+        class="mt-5 h-10 text-left flex flex-row ml-1 mr-1 mb-2 text-lg justify-between items-center align-bottom"
+      >
+        <div class="flex flex-row items-center align-bottom">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.25"
+            stroke="currentColor"
+            class="w-6 h-6 mr-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+            />
+          </svg>
+          <span class="mt-1"> Left </span>
+        </div>
+        <div
+          class="flex flex-row items-center align-bottom z-20"
+          on:click={reDirect}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.25"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+            />
+          </svg>
+        </div>
+        <div class="flex flex-row items-center align-bottom">
+          <span class="mt-1"> Right </span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.25"
+            stroke="currentColor"
+            class="w-6 h-6 ml-2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 15l6-6m0 0l-6-6m6 6H9a6 6 0 000 12h3"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
     <img
       class="w-3/4 bg-gray-100 p-1 drop-shadow-2xl shadow-gray-900 z-20"
